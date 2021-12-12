@@ -1,0 +1,11 @@
+a = 10
+i = 0
+j = 1
+count = 0
+
+while count < a:
+    print(i)
+    k = i+j
+    i=j
+    j=k
+    count= count+1
