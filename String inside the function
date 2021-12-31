@@ -1,0 +1,5 @@
+string="1234abcd"
+def fun(string):
+    print(string[::-1])
+    
+result=fun(string)
