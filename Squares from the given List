@@ -1,4 +1,4 @@
 nums = [4,5,2,9]
-squares = map(lambda x:x*x,numbers)
+squares = map(lambda x:x*x,nums)
 
 print(list(squares))
