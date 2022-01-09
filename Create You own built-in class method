@@ -1,0 +1,23 @@
+class my_solution:
+    def __init__(self, base, exponent): 
+        self.base = base 
+        self.exponent = exponent 
+    def  pow(self, base, exponent):
+            if base==0 or base==1 or exponent==1:
+                return base 
+
+            if base==-1:
+                if exponent%2 ==0:
+                    return 1
+                else:
+                    return -1
+            if exponent==0:
+                return 1
+            if exponent<0:
+                return 1/self.pow(base,-exponent)
+            val = self.pow(base,exponent//2)
+            if exponent%2 ==0:
+                return val*val
+            return val*val*base
+power=my_solution(10,2)
+power.pow(10,2)
