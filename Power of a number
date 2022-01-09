@@ -1,0 +1,9 @@
+val=1
+x=10
+n=2
+if n>0:
+    for i in range(1,n+1):
+        val=val*x
+    print (val)
+if n == 0 or x == 0:
+    print (val)
