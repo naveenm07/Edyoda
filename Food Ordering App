@@ -1,0 +1,167 @@
+class Myrestaurant:
+    def __init__(self):
+        self.food = {}
+        self.food_id = len(self.food)+1
+        self.order = []
+        self.personal_details = {}
+        
+
+    def add_food_items(self):
+        self.name = input("Enter the food name: ")
+        self.quantity = int(input("Enter the quantity: "))
+        self.price = float(input("Enter the price: "))
+        self.stock = int(input("Enter the food stock: "))
+        self.discount = int(input("Enter discount value: "))
+        self.item = {"name":self.name,"quantity":self.quantity,"price":self.price,"stock":self.stock,"discount":self.discount}
+        self.food_id = len(self.food)+1
+        self.food[self.food_id] = self.item
+        print("Food Item added successfully \n", self.food)
+        
+    def view_items(self):
+        print("List of all food items are: ")
+        for i in self.food:
+            print("Food id :",i,"\n")
+            for j in self.food[i]:
+                print(j, ":",self.food[i][j])
+        
+    def delete_items(self):
+        idnumber= input("Enter the food id you want to delete: ")
+        if idnumber in self.food.keys():
+            del self.food[k]
+            print("Item is deleted")
+            print("Remaining food items are: ", self.food)
+            self.view_items()
+        else:
+            print("Invalid ID")
+        
+        
+    def edit_items(self):
+        food_id = int(input("Enter the food id you want to update:"))
+        print("1.Food Name\n2. Quantity\n3. Price ID\n4. Stock\n5. Discount\n")
+        num = int(input("Choose one:"))                                    
+        if num == 1:
+            self.food["Food Name"]=input("Enter the food name: ")
+            
+        elif num == 2:                    
+            self.food["Quantity"]=int(input("Enter the quantity: "))
+                  
+        elif num== 3:
+            self.food["Price"]=float(input("Enter the price: "))
+            
+        elif num == 4:
+            self.food["Stock"]=int(input("Enter the food stock: "))
+            
+        elif num == 5:
+            self.food["Discount"]=int(input("Enter discount value: "))
+       
+            
+        else:
+             print("Please a valid number")
+         
+        print("Food item is updated successfully : ",self.food)
+    
+    def register(self):
+        try:
+            self.full_name = input("Enter your full name: ")
+            self.phone_number = int(input("Enter your phone number: "))
+            self.email = input("Enter your email : ")
+            self.address = input("Enter the address: ")
+            self.password = input('Enter the password: ')
+            self.user_details = {"User Name": self.full_name, "Phone Number": self.phone_number, "Email ID": self.email, "Password": self.password, "Address": self.address}
+            print("user registered successfully",self.user_details)
+            self.login()
+        except exception as e:
+            print("Unsuccessfull")
+    def login(self):
+        email_id = input("Enter your E-mail: ")
+        password = input("Enter your Password: ")
+        if email_id == self.email and password == self.password:
+            print("1.Place New Order\n2.Order History\n3.Update Details")
+            ip2 = int(input("Choose One:"))
+            if ip2 == 1:
+                self.place_new_order()
+            elif ip2 == 2:
+                self.order_history()
+            elif ip2==3:
+                self.update_details()
+        else:
+            print("invalid")
+        
+        
+    def place_new_order(self):
+        
+        list_of_food_items = {1: 'Tandoori Chicken (4 pieces) [INR 240]',
+                            2: 'Vegan Burger (1 Piece) [INR 320]',
+                            3: 'Truffle Cake (500gm) [INR 900]',
+                             }
+        print ("Menu list" )
+        i = int(input("select food from the list:"))
+        for i in list_of_food_items :
+            print(i, list_of_food_items[i])
+            break
+            
+    def order_history(self):
+        for i in self.order:
+            print(i)
+    def update_details(self):
+        print("1.Name\n2.Phone number\n3.Email ID\n4.Password\n5.Address\n")
+        num = int(input("Choose one"))                                    
+        if num == 1:
+            self.user_details["User Name"]=input("Enter your full name : ")
+            print("Name Changed Successfully")
+        elif num == 2:                    
+            self.user_details["Phone No."]=int(input("Enter your updated 10 digit phone number : "))
+            print("Phone Number Changed Successfully")      
+        elif num== 3:
+            self.user_details["Email_ID"]=input("Enter your updated email id : ")
+            print("Email ID Changed Successfully")
+        elif num == 4:
+            self.user_details["Password"]=input("Enter your updated password : ")
+            print("Password Changed Successfully")
+        elif num == 5:
+            self.user_details["Address"]=input("Enter your updated address: ")
+            print("Address Changed Successfully")
+        else:
+             print("Invalid number")
+                    
+try:                  
+    def main():
+        Object = Myrestaurant()
+        print("Welcome to Naveen Restaurant")
+        print("1.Admin Login\n2.User Login\n3.Exit")
+        user_input = int(input("Choose one: "))
+        if user_input == 1:
+            email_id= input("Enter admin email: ")
+            password = input(" Enter password: ")
+            if email_id=="naveen@gmail.com" and password == "password":
+                print("1.Add Food Items\n2. View Food Items\n3. Edit Food Items\n4. Delete Food Items")
+                user_ip = int(input("Choose one: "))
+                if user_ip == 1:
+                    Object.add_food_items()
+                elif user_ip == 2:
+                    Object.view_items()
+                elif user_ip == 3:
+                    Object.edit_items()
+                elif user_ip == 4:
+                    Object.delete_items()
+            else:
+                print("Incorrect Login Details")
+                
+        else:
+            print("invalid")
+        if user_input == 2:
+            print("1.New User\n2. Login")
+            user_ip = int(input("Choose one: "))
+            if user_ip == 1:
+                Object.register()
+            elif user_ip == 2:
+                Object.login()
+        
+        else:
+            print("invalid")
+        if user_input == 3:
+            exit
+except Exception as e:
+    print("Try Again")
+if __name__ == "__main__":
+    main()
